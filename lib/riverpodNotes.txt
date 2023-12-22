@@ -1,0 +1,29 @@
+providers => controllers (encapsulates the state of the widgets which can be accessed in the tree for UI rendering)
+
+we use consumerWidget to use providers
+
+1) simple provider => it only reads doesnt change the state upon changing 
+
+2) watch is equivalent to obs in riverpod we wrap the widgt with consumer it rebuilds the widget when state is being watched
+
+	Consumer (
+	builder:(context,ref,child){
+	int count = ref.watch(name);
+	return container();
+	}
+
+	button(
+	// incrementing the state which is integer typed on button click 
+	ref.read(name.state).state++
+	)
+
+
+3) Future Provider used for async functions 
+
+4) stream provider are used for real time chat apps or real time database which isnt like client server 
+
+5) stateNotifierProvider are used for immutable objects
+
+6) modifiers are of 2 types:
+	1) autoDispose which destroys the state when its no longer being used
+	2)family is used for getting a unique provider based on external parameters from UI
